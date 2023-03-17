@@ -1,0 +1,114 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MG.MainPage"
+             Title="Home">
+
+    <Grid RowDefinitions="100, Auto, *"
+      ColumnDefinitions=".100*, .25*"
+      Padding="100"
+      BackgroundColor="#FBF3E7">
+
+        <Image Grid.ColumnSpan="1"
+           Source="munchguidelogo.png"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           TranslationX="20"
+           TranslationY="-20"
+           WidthRequest="210"
+           HeightRequest="207" />
+        
+        <Image Source="pinkbg.png"
+               HorizontalOptions="Center"
+               TranslationX="60"
+               TranslationY="100"
+               WidthRequest="600"
+               HeightRequest="90"/>
+
+
+        <Label Text="Don't Just Book it, Food it!" FontAttributes="Bold"
+           Grid.ColumnSpan="1"
+           TextColor="#E44343"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="40"
+           TranslationY="175"
+           WidthRequest="270"
+           HeightRequest="190"
+           FontSize="20"/>
+
+        <Grid>
+            <Image Grid.ColumnSpan="1"
+               Source="foodbg.png"
+               HorizontalOptions="Center"
+               TranslationX="25"
+               TranslationY="290"
+               WidthRequest="980"
+               HeightRequest="300" />
+        </Grid>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Chinese’s Cuisines"
+                        BackgroundColor="#E7513D"
+                        Command="{Binding IncrementCountCommand}"
+                        Clicked="OnChineseButtonClicked" 
+                        HorizontalOptions="Center"
+                        TranslationX="-60"
+                        TranslationY="190"
+                        WidthRequest="260"
+                        HeightRequest="73"
+                        FontSize="20"/>
+            <Grid>
+                <!-- other elements in the layout -->
+                <Image Source="whitearrow.png"
+                       TranslationX="-100"
+                       TranslationY="150"
+                       WidthRequest="20"
+                       HeightRequest="18"
+                       VerticalOptions="End" />
+            </Grid>
+
+
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Malay’s Cuisines"
+                    BackgroundColor="#E7513D"
+                    Command="{Binding IncrementCountCommand}"
+                    Clicked="OnMalayButtonClicked"
+                    HorizontalOptions="Center"
+                    TranslationX="-60"
+                    TranslationY="290"
+                    WidthRequest="259"
+                    HeightRequest="73"
+                    FontSize="20"/>
+
+            <Image Source="whitearrow.png"
+                       TranslationX="-100"
+                       TranslationY="250"
+                       WidthRequest="30"
+                       HeightRequest="18"
+                       VerticalOptions="End" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Indian’s Cuisines"
+                    BackgroundColor="#E7513D"
+                    Command="{Binding IncrementCountCommand}"
+                    Clicked="OnIndianButtonClicked"
+                    HorizontalOptions="Center" 
+                    TranslationX="-60"
+                    TranslationY="390"
+                    WidthRequest="259"
+                    HeightRequest="73"
+                    FontSize="20"/>
+
+            <Image Source="whitearrow.png"
+                   TranslationX="-100"
+                   TranslationY="390"
+                   WidthRequest="30"
+                   HeightRequest="18"/>
+        </StackLayout>
+
+    </Grid>
+
+</ContentPage>

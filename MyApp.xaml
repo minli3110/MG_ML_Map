@@ -1,0 +1,34 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="MG.MyApp"
+             Title="Map">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="100, Auto, *"
+              ColumnDefinitions=".100*, .25*"
+              Padding="100"
+              BackgroundColor="#FBF3E7">
+
+            <maps:Map x:Name="myMap"
+                  MapType="Street"
+                  IsShowingUser="true"
+                  HeightRequest="500"/>
+
+            <!--Back Arrow-->
+            <StackLayout>
+                <ImageButton Source="backarrow.png" 
+                     Command="{Binding IncrementCountCommand}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     TranslationX="-140"
+                     TranslationY="-880"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     Clicked="OnBackButtonClicked"
+                     Opacity="1" 
+                     BackgroundColor="Transparent"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

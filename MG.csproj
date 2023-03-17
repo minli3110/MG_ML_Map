@@ -1,0 +1,175 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-maccatalyst;net7.0-android</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MG</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>MG</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.mg</ApplicationId>
+		<ApplicationIdGuid>aa8da052-3983-442d-9e44-2f02c7628a3b</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+	  <WarningLevel>7</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+	  <WarningLevel>7</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
+	  <MauiCss Remove="NewFolder\**" />
+	  <MauiXaml Remove="NewFolder\**" />
+	  <None Remove="NewFolder\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="ChineseCuisines\MyMapxaml.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\addphoto.png" />
+	  <None Remove="Resources\Images\backarrow.png" />
+	  <None Remove="Resources\Images\btn.png" />
+	  <None Remove="Resources\Images\chickenrice1.png" />
+	  <None Remove="Resources\Images\chillicrab1.png" />
+	  <None Remove="Resources\Images\foodbg.png" />
+	  <None Remove="Resources\Images\hokkienmee1.png" />
+	  <None Remove="Resources\Images\kayatoast1.png" />
+	  <None Remove="Resources\Images\meegoreng.png" />
+	  <None Remove="Resources\Images\Munchguidelogo.png" />
+	  <None Remove="Resources\Images\nasibriyani.png" />
+	  <None Remove="Resources\Images\nasikerabu.png" />
+	  <None Remove="Resources\Images\nasilemak.png" />
+	  <None Remove="Resources\Images\pinkbg.png" />
+	  <None Remove="Resources\Images\Rectangle.png" />
+	  <None Remove="Resources\Images\rendang.png" />
+	  <None Remove="Resources\Images\rojak.png" />
+	  <None Remove="Resources\Images\rotijohn.png" />
+	  <None Remove="Resources\Images\rotiprata.png" />
+	  <None Remove="Resources\Images\whitearrow.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AddReview.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ChineseCuisines\ChickenRice.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ChineseCuisines\ChiliCrab.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ChineseCuisines\Chinesecuisines.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ChineseCuisines\HokkienMee.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ChineseCuisines\KayaToast.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IndianCuisines\Indiancuisines.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IndianCuisines\NasiBriyani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IndianCuisines\Rojak.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IndianCuisines\RotiJohn.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IndianCuisines\RotiPrata.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MalayCusinies\Malayscuisines.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MalayCusinies\MeeGoreng.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MalayCusinies\NasiKerabu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MalayCusinies\NasiLemak.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MalayCusinies\Rendang.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MyApp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="NewFolder1\" />
+	  <Folder Include="Views\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Fabulous.MauiControls.Maps" Version="2.3.0" />
+	  <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.59" />
+	  <PackageReference Include="Microsoft.Maui.Maps" Version="7.0.59" />
+	  <PackageReference Include="Reactor.Maui.Maps" Version="1.0.113" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
+	  <PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
+	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
+	  <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.4" />
+	  <PackageReference Include="Syncfusion.Maui.Inputs" Version="20.4.54" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MyApp.xaml.cs">
+	    <DependentUpon>MyApp.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+</Project>

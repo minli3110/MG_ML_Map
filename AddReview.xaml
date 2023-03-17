@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MG.AddReview"
+             Title="Reviews"
+             xmlns:rating ="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:models ="clr-namespace:MG.Models"
+             BackgroundColor="#FBF3E7">
+
+
+    <ScrollView 
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        VerticalScrollBarVisibility="Always">
+
+        <VerticalStackLayout>
+        <!--TitleReviews-->
+        <Label Text="Reviews"
+           Grid.ColumnSpan="1"
+           TextColor="#E44343"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="60"
+           TranslationY="30"
+           WidthRequest="200"
+           HeightRequest="210" 
+           FontSize="30"
+           FontAttributes="Bold" />
+
+        <!--Name:-->
+        <Label Text="Name:" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="-30"
+           TranslationY="-120"
+           WidthRequest="200"
+           HeightRequest="210" 
+           FontSize="15"
+           FontAttributes="Bold"/>
+
+        <Entry
+            Text="{Binding Name}"
+            Placeholder="Name"
+            Margin="15, 20"
+            TranslationX="20"
+            TranslationY="-360"
+            WidthRequest="180"
+            HeightRequest="30" />
+
+        <!--Title-->
+        <Label Text="Title:" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="-30"
+           TranslationY="-360"
+           WidthRequest="200"
+           HeightRequest="210" 
+           FontSize="15"
+           FontAttributes="Bold"/>
+
+        <Entry
+            Text="{Binding Title}"
+            Placeholder="Title"
+            Margin="55, 20"
+            TranslationX="20"
+           TranslationY="-600"
+            WidthRequest="180"
+            HeightRequest="30"/>
+
+        <!--Date-->
+        <Label Text="Date:" 
+           Grid.ColumnSpan="1"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="-30"
+           TranslationY="-603"
+           WidthRequest="200"
+           HeightRequest="210" 
+           FontSize="15"
+           FontAttributes="Bold"/>
+
+        <DatePicker 
+              Format="dd/mm/yyyy"
+              TranslationX="5"
+              TranslationY="-820"
+              WidthRequest="150"
+              HeightRequest="40"/>
+
+        <!--Rating-->
+        <Label Text="Rating:"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="-30"
+           TranslationY="-810"
+           WidthRequest="200"
+           HeightRequest="210" 
+           FontSize="15"
+           FontAttributes="Bold"/>
+
+                <Grid TranslationX="5"
+                      TranslationY="-990"
+                      WidthRequest="50"
+                      HeightRequest="50">       
+                    <rating:SfRating x:Name="rating" 
+                      BackgroundColor="Transparent" />
+                    <rating:SfRating ItemCount="-100" 
+                      BackgroundColor="Transparent" />
+                    <rating:SfRating Precision="Standard" 
+                      BackgroundColor="Transparent" />
+
+                    <!--Review-->
+            <Label Text="Review:" 
+           Grid.ColumnSpan="1"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           TranslationX="-30"
+           TranslationY="150"
+           WidthRequest="200"
+           HeightRequest="210" 
+           FontSize="15"
+           FontAttributes="Bold"/>
+
+            <Editor
+             HeightRequest="150"
+             Text="{Binding Review}"
+             Placeholder="Review"
+             TranslationX="-10"
+             TranslationY="140"
+             Margin="-100, 20"/>
+        </Grid>
+            
+            <!--Add Photo-->
+            <Button Text="+Add Photo"
+              TextColor="white"
+              BackgroundColor="#E44343"
+              TranslationX="0"
+              TranslationY="-780"
+              WidthRequest="110"
+              HeightRequest="40"
+              Command="{Binding IncrementCountCommand}"
+              Clicked="OnAddPhotoClicked"/>
+
+            <Image x:Name="addPhoto"
+                   Source="addphoto.png"
+                   TranslationX="0"
+              TranslationY="-760"
+              WidthRequest="200"
+              HeightRequest="200"/>
+
+
+            <!--Submit Button-->
+            <Button Text="Submit"
+              TextColor="white"
+              BackgroundColor="#E44343"
+              TranslationX="0"
+              TranslationY="-740"
+              WidthRequest="100"
+              HeightRequest="40"
+              Command="{Binding IncrementCountCommand}"
+              Clicked="OnSubmitClicked"/>
+
+            <!--Back Arrow-->
+        <StackLayout>
+            <ImageButton Source="backarrow.png" 
+                     Command="{Binding IncrementCountCommand}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     TranslationX="-125"
+                     TranslationY="-1530"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     Clicked="OnBackButtonClicked"
+                     Opacity="1" 
+                     BackgroundColor="Transparent"/>
+        </StackLayout>
+    </VerticalStackLayout>
+   </ScrollView>
+</ContentPage>
